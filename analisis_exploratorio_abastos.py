@@ -2,8 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Cargar el dataset
-df = pd.read_csv("dataset_ventas_simulado.csv", parse_dates=["fecha"])
+try:
+    df = pd.read_csv("dataset_ventas_simulado.csv", parse_dates=["fecha"])
+except FileNotFoundError:
+    st.error("❌ No se encontró el archivo dataset_ventas_simulado.csv. Sube el archivo al repositorio de GitHub.")
+    st.stop()
+
 
 # Vista general
 print("Resumen de datos:")
